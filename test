@@ -1,1 +1,939 @@
-vim
+{
+	"info": {
+		"_postman_id": "d9f5bdf8-f53c-454b-a40e-2b86805e4204",
+		"name": "lx",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "手机号查询",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonDate=JSON.parse(responseBody)\r",
+							"pm.globals.set(\"province\", jsonDate.data.province);\r",
+							"console.log(jsonDate.data.province)\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://cx.shouji.360.cn/phonearea.php?number=15901258752",
+					"protocol": "http",
+					"host": [
+						"cx",
+						"shouji",
+						"360",
+						"cn"
+					],
+					"path": [
+						"phonearea.php"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "15901258752"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IP地址",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "ip",
+							"value": "192.68.11.23",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "dca0ac3931249b176f7dd83f46e1771a",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/ip/ipNewV3",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"ip",
+						"ipNewV3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "节假日信息查询",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "2023-03-12",
+							"description": "您申请的appkey",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "2555ca88db0f24f42b94a65db6514f29",
+							"description": "指定日期，格式为yyyy-MM-dd，如：2021-05-01",
+							"type": "default"
+						},
+						{
+							"key": "detail",
+							"value": "1",
+							"description": "非必填，是否返回详细信息，当值为1时，返回详细信息",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/calendar/day",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"calendar",
+						"day"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "天气预报",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "city",
+							"value": "{{province}}",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "39e9abf97ac53f5926d089999c06408a",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/simpleWeather/query",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"simpleWeather",
+						"query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-热门视频榜",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(pm.info.iterationCount)\r",
+							"console.log(pm.info.requestName)\r",
+							"console.log(pm.info.requestId)\r",
+							"\r",
+							"console.log(pm.sendRequest('https://postman-echo.com/get',function(err,res){\r",
+							"if(err){console.log(err);}\r",
+							"else{pm.environment.set(\"variable_key\",\"new_value\")}\r",
+							"}))\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "date",
+							"value": "2023-03-12",
+							"description": "您申请的appkey",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "2555ca88db0f24f42b94a65db6514f29",
+							"description": "指定日期，格式为yyyy-MM-dd，如：2021-05-01",
+							"type": "default"
+						},
+						{
+							"key": "detail",
+							"value": "1",
+							"description": "非必填，是否返回详细信息，当值为1时，返回详细信息",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/calendar/day",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"calendar",
+						"day"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-搞笑达人榜",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"postman.setNextRequest(\"热门视频榜单-美食达人榜\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "amusement_overall",
+							"description": "可选值:\namusement_overall(搞笑总榜)\namusement_new(搞笑新势力榜)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "7f97d88817bd3ec9f82d02e5726e6893",
+							"type": "default"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "返回条数, 默认10 ,最大50",
+							"type": "default"
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"description": "偏移量, 如:2 表示从第二条开始取size条数;",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/douyin/billboard",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"douyin",
+						"billboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-游戏达人榜",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "game_inf",
+							"description": "可选值:\ngame_console(单机主机榜)\ngame_inf(游戏资讯榜)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "7f97d88817bd3ec9f82d02e5726e6893",
+							"type": "default"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "返回条数, 默认10 ,最大50",
+							"type": "default"
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"description": "偏移量, 如:2 表示从第二条开始取size条数;",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/douyin/billboard",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"douyin",
+						"billboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-美食达人榜",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "food_overall",
+							"description": "可选值:\nfood_overall(美食总榜)\nfood_new(美食新势力榜)\nfood_tutorial(美食教程榜)\nfood_shop(美食探店榜)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "7f97d88817bd3ec9f82d02e5726e6893",
+							"type": "default"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "返回条数, 默认10 ,最大50",
+							"type": "default"
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"description": "偏移量, 如:2 表示从第二条开始取size条数;",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/douyin/billboard",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"douyin",
+						"billboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-汽车达人榜",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "car_driver",
+							"description": "可选值:\ncar_overall(汽车总榜)\ncar_comment(评车榜)\ncar_play(玩车榜)\ncar_use(用车榜)\ncar_driver(驾考榜)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "7f97d88817bd3ec9f82d02e5726e6893",
+							"type": "default"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "返回条数, 默认10 ,最大50",
+							"type": "default"
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"description": "偏移量, 如:2 表示从第二条开始取size条数;",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/douyin/billboard",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"douyin",
+						"billboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-旅游达人榜",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "travel_overall",
+							"description": "可选值:\ntravel_overall(旅游总榜)\ntravel_new(旅游新势力榜)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "7f97d88817bd3ec9f82d02e5726e6893",
+							"type": "default"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "返回条数, 默认10 ,最大50",
+							"type": "default"
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"description": "偏移量, 如:2 表示从第二条开始取size条数;",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/douyin/billboard",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"douyin",
+						"billboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-体育达人榜",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "sport_overall",
+							"description": "可选值:\nsport_overall(体育总榜)\nsport_basketball(篮球榜)\nsport_soccer(足球榜)\nsport_comprehensive(综合体育榜)\nsport_fitness(运动健身榜)\nsport_outdoors(户外运动榜)\nsport_table_tennis(台球榜)\nsport_culture(运动文化榜)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "7f97d88817bd3ec9f82d02e5726e6893",
+							"type": "default"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "返回条数, 默认10 ,最大50",
+							"type": "default"
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"description": "偏移量, 如:2 表示从第二条开始取size条数;",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/douyin/billboard",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"douyin",
+						"billboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "热门视频榜单-二次元达人榜",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "cospa_overall",
+							"description": "可选值:\ncospa_overall(二次元总榜)\ncospa_qing_man(轻漫榜)\ncospa_out_shot(出境拍摄榜)\ncospa_painting(绘画榜)\ncospa_voice_control(声控榜)\ncospa_brain_cavity(脑洞榜)\ncospa_new(二次元新势力榜)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "7f97d88817bd3ec9f82d02e5726e6893",
+							"type": "default"
+						},
+						{
+							"key": "size",
+							"value": "10",
+							"description": "返回条数, 默认10 ,最大50",
+							"type": "default"
+						},
+						{
+							"key": "offset",
+							"value": "2",
+							"description": "偏移量, 如:2 表示从第二条开始取size条数;",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/douyin/billboard",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"douyin",
+						"billboard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新闻头条-新闻详情查询",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "e0d1afe888d9e5741b60de0e0a3b4f3e\n\n",
+							"type": "default"
+						},
+						{
+							"key": "uniquekey",
+							"value": "{{uniquekey}}",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://v.juhe.cn/toutiao/content",
+					"protocol": "http",
+					"host": [
+						"v",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"toutiao",
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新闻头条-新闻列表查询",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "caijing",
+							"description": "支持类型\ntop(推荐,默认)\nguonei(国内)\nguoji(国际)\nyule(娱乐)\ntiyu(体育)\njunshi(军事)\nkeji(科技)\ncaijing(财经)\nyouxi(游戏)\nqiche(汽车)\njiankang(健康)",
+							"type": "default"
+						},
+						{
+							"key": "key",
+							"value": "e0d1afe888d9e5741b60de0e0a3b4f3e\n\n",
+							"type": "default"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"description": "当前页数, 默认1, 最大50",
+							"type": "default"
+						},
+						{
+							"key": "page_size",
+							"value": "30",
+							"description": "每页返回条数, 默认30 , 最大30",
+							"type": "default"
+						},
+						{
+							"key": "is_filter",
+							"value": "",
+							"description": "是否只返回有内容详情的新闻, 1:是, 默认0",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://v.juhe.cn/toutiao/content",
+					"protocol": "http",
+					"host": [
+						"v",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"toutiao",
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "性格测试-获取性格测试题目",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "999154f0dc51f3f12650e0b067af878d",
+							"type": "default"
+						},
+						{
+							"key": "level",
+							"value": "4",
+							"description": "返回题目数量（senior:12道题目；默认：4道题目）",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/character_test/questions",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"character_test",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "性格测试-提交答案获取测试结果",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "999154f0dc51f3f12650e0b067af878d",
+							"type": "default"
+						},
+						{
+							"key": "answers",
+							"value": "grf9,QSPG,GzFn,u4t0,BpCE,tvuO,E6Fh,WzXw,mklb,MkNk,irh5,sfqT",
+							"description": "所有问题的选项值（选择A时填ia的值，选择B时填ib的值），中间用半角逗号分隔，如grf9,QSPG,GzFn,u4t0,BpCE,tvuO,E6Fh,WzXw,mklb,MkNk,irh5,sfqT\n",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://apis.juhe.cn/fapig/character_test/analysis",
+					"protocol": "http",
+					"host": [
+						"apis",
+						"juhe",
+						"cn"
+					],
+					"path": [
+						"fapig",
+						"character_test",
+						"analysis"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
